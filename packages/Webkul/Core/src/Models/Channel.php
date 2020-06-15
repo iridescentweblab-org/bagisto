@@ -81,7 +81,7 @@ class Channel extends Model implements ChannelContract
             return;
         }
 
-        return Storage::url($this->logo);
+        return asset('storage/'.$this->logo);
     }
 
     /**
@@ -101,7 +101,8 @@ class Channel extends Model implements ChannelContract
             return;
         }
 
-        return Storage::url($this->favicon);
+        return asset('storage/'.$this->favicon);
+
     }
 
     /**
