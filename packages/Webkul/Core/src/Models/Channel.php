@@ -22,6 +22,15 @@ class Channel extends Model implements ChannelContract
         'base_currency_id',
         'root_category_id',
         'home_seo',
+        'style_background',
+        'style_color',
+        'style_primary_color',
+        'style_secondary_color',
+        'style_social_media',
+        'style_footer_background',
+        'style_footer_color',
+        'style_footer_menu_color',
+        'style_methods_background'
     ];
 
     /**

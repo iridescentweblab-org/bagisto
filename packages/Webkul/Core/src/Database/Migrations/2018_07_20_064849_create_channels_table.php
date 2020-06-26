@@ -30,6 +30,15 @@ class CreateChannelsTable extends Migration
             $table->foreign('default_locale_id')->references('id')->on('locales')->onDelete('cascade');
             $table->foreign('base_currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->timestamps();
+            $table->string('style_background')->nullable();
+            $table->string('style_color')->nullable();
+            $table->string('style_primary_color')->nullable();
+            $table->string('style_secondary_color')->nullable();
+            $table->string('style_social_media')->nullable();
+            $table->string('style_footer_background')->nullable();
+            $table->string('style_footer_color')->nullable();
+            $table->string('style_footer_menu_color')->nullable();
+            $table->string('style_methods_background')->nullable();
         });
 
         Schema::create('channel_locales', function (Blueprint $table) {

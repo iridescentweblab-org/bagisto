@@ -4,6 +4,7 @@ namespace Webkul\Core\Http\Controllers;
 
 use Illuminate\Support\Facades\Event;
 use Webkul\Core\Repositories\ChannelRepository;
+use ScssPhp\ScssPhp\Compiler;
 
 class ChannelController extends Controller
 {
@@ -71,6 +72,15 @@ class ChannelController extends Controller
             'root_category_id'  => 'required',
             'logo.*'            => 'mimes:jpeg,jpg,bmp,png',
             'favicon.*'         => 'mimes:jpeg,jpg,bmp,png',
+            'style_background'        => 'required',
+            'style_color'       => 'required',
+            'style_primary_color'  => 'required',
+            'style_secondary_color' => 'required',
+            'style_social_media' => 'required',
+            'style_footer_background' => 'required',
+            'style_footer_color' => 'required',
+            'style_footer_menu_color' => 'required',
+            'style_methods_background' => 'required',
             'seo_title'         => 'required|string',
             'seo_description'   => 'required|string',
             'seo_keywords'      => 'required|string',
@@ -134,6 +144,15 @@ class ChannelController extends Controller
             'root_category_id'  => 'required',
             'logo.*'            => 'mimes:jpeg,jpg,bmp,png',
             'favicon.*'         => 'mimes:jpeg,jpg,bmp,png',
+            'style_background'  => 'required',
+            'style_color'       => 'required',
+            'style_primary_color'  => 'required',
+            'style_secondary_color' => 'required',
+            'style_social_media' => 'required',
+            'style_footer_background' => 'required',
+            'style_footer_color' => 'required',
+            'style_footer_menu_color' => 'required',
+            'style_methods_background' => 'required',
             'hostname'          => 'unique:channels,hostname,' . $id,
         ]);
 
@@ -154,6 +173,26 @@ class ChannelController extends Controller
         $channel = $this->channelRepository->update($data, $id);
 
         Event::dispatch('core.channel.update.after', $channel);
+
+        $scss = new Compiler();
+
+        $scss_path = base_path('public/themes/advanced/assets/css/advanced.scss');
+
+        $scss->setVariables(array(
+            'style_background' =>$data['style_background'],
+            'style_color' => $data['style_color'],
+            'style_primary_color' => $data['style_primary_color'],
+            'style_secondary_color' => $data['style_secondary_color'],
+            'style_social_media' => $data['style_social_media'],
+            'style_footer_background' => $data['style_footer_background'],
+            'style_footer_color' => $data['style_footer_color'],
+            'style_footer_menu_color' => $data['style_footer_menu_color'],
+            'style_methods_background' => $data['style_methods_background']
+        ));
+
+        $content = $scss->compile('@import "'.$scss_path.'"');
+
+        file_put_contents(public_path().'/themes/advanced/assets/css/advanced.css', $content);
 
         session()->flash('success', trans('admin::app.settings.channels.update-success'));
 

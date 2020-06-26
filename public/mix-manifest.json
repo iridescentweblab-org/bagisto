@@ -1,4 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/vendor/webkul/admin/assets/js/spectrum_colorpicker2/spectrum.js": "/vendor/webkul/admin/assets/js/spectrum_colorpicker2/spectrum.js",
+    "/vendor/webkul/admin/assets/css/spectrum_colorpicker2/spectrum.css": "/vendor/webkul/admin/assets/css/spectrum_colorpicker2/spectrum.css"
 }

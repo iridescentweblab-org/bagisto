@@ -23,6 +23,15 @@ class ChannelTableSeeder extends Seeder
             'default_locale_id' => 1,
             'base_currency_id'  => 1,
             'home_seo'          => '{"meta_title": "Demo store", "meta_keywords": "Demo store meta keyword", "meta_description": "Demo store meta description"}',
+            'style_background'  => '#fff',
+            'style_color'       => '#000',
+            'style_primary_color'   =>  '#4d7ea8',
+            'style_secondary_color'  => '#26a37c',
+            'style_social_media'    => '#fff',
+            'style_footer_background'   => '#30383f',
+            'style_footer_color'    => '#808080',
+            'style_footer_menu_color'   =>  '#000000',
+            'style_methods_background'  =>  '#141516'
         ]);
 
         DB::table('channel_currencies')->insert([

@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="{{ asset('themes/advanced/assets/css/advanced.css') }}">

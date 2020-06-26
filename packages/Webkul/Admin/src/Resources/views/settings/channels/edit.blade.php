@@ -184,6 +184,60 @@
                                 <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="favicon" :multiple="false" :images='"{{ $channel->favicon_url }}"'></image-wrapper>
                             </div>
 
+                            <div class="control-group" :class="[errors.has('style_background') ? 'has-error' : '']">
+                                <label for="style_background">Background</label>
+                                <input type="text" v-validate="''" class="control" id="style_background" name="style_background"/>
+                                <span class="control-error" v-if="errors.has('style_background')">@{{ errors.first('style_background') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_color') ? 'has-error' : '']">
+                                <label for="style_color">Color</label>
+                                <input type="text" v-validate="''" class="control" id="style_color" name="style_color"/>
+                                <span class="control-error" v-if="errors.has('style_color')">@{{ errors.first('style_color') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_primary_color') ? 'has-error' : '']">
+                                <label for="style_primary_color">Primary Color</label>
+                                <input type="text" v-validate="''" class="control" id="style_primary_color" name="style_primary_color"/>
+                                <span class="control-error" v-if="errors.has('style_primary_color')">@{{ errors.first('style_primary_color') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_secondary_color') ? 'has-error' : '']">
+                                <label for="style_secondary_color">Secondary Color</label>
+                                <input type="text" v-validate="''" class="control" id="style_secondary_color" name="style_secondary_color"/>
+                                <span class="control-error" v-if="errors.has('style_secondary_color')">@{{ errors.first('style_secondary_color') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_social_media') ? 'has-error' : '']">
+                                <label for="style_social_media">Social Media Icons</label>
+                                <input type="text" v-validate="''" class="control" id="style_social_media" name="style_social_media"/>
+                                <span class="control-error" v-if="errors.has('style_social_media')">@{{ errors.first('style_social_media') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_footer_background') ? 'has-error' : '']">
+                                <label for="style_footer_background">Footer Background</label>
+                                <input type="text" v-validate="''" class="control" id="style_footer_background" name="style_footer_background"/>
+                                <span class="control-error" v-if="errors.has('style_footer_background')">@{{ errors.first('style_footer_background') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_footer_color') ? 'has-error' : '']">
+                                <label for="style_footer_color">Footer Color</label>
+                                <input type="text" v-validate="''" class="control" id="style_footer_color" name="style_footer_color"/>
+                                <span class="control-error" v-if="errors.has('style_footer_color')">@{{ errors.first('style_footer_color') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_footer_menu_color') ? 'has-error' : '']">
+                                <label for="style_footer_menu_color">Footer Menu Color</label>
+                                <input type="text" v-validate="''" class="control" id="style_footer_menu_color" name="style_footer_menu_color"/>
+                                <span class="control-error" v-if="errors.has('style_footer_menu_color')">@{{ errors.first('style_footer_menu_color') }}</span>
+                            </div>
+
+                            <div class="control-group" :class="[errors.has('style_methods_background') ? 'has-error' : '']">
+                                <label for="style_methods_background">Methods Background</label>
+                                <input type="text" v-validate="''" class="control" id="style_methods_background" name="style_methods_background"/>
+                                <span class="control-error" v-if="errors.has('style_methods_background')">@{{ errors.first('style_methods_background') }}</span>
+                            </div>
+
                         </div>
                     </accordian>
 
@@ -222,10 +276,12 @@
             </div>
         </form>
     </div>
+    <link rel="stylesheet" href="{{ asset('vendor/webkul/admin/assets/css/spectrum_colorpicker2/spectrum.css') }}">
 @stop
 
 @push('scripts')
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/spectrum_colorpicker2/spectrum.js') }}"></script>
 
     <script>
         $(document).ready(function () {
@@ -237,6 +293,42 @@
                 toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code',
                 image_advtab: true,
                 valid_elements : '*[*]'
+            });
+            $("#style_background").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_background ?>"
+            });
+            $("#style_color").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_color ?>"
+            });
+            $("#style_primary_color").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_primary_color ?>"
+            });
+            $("#style_secondary_color").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_secondary_color ?>"
+            });
+            $("#style_social_media").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_social_media ?>"
+            });
+            $("#style_footer_background").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_footer_background ?>"
+            });
+            $("#style_footer_color").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_footer_color ?>"
+            });
+            $("#style_footer_menu_color").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_footer_menu_color ?>"
+            });
+            $("#style_methods_background").spectrum({
+                preferredFormat: "hex",
+                color: "<?php echo $channel->style_methods_background ?>"
             });
         });
     </script>

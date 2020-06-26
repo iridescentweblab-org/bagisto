@@ -23,5 +23,19 @@ return [
             'name' => 'Velocity',
             'parent' => 'default'
         ],
+
+        'basic' => [
+            'views_path' => 'resources/themes/basic/views',
+            'assets_path' => 'public/themes/basic/assets',
+            'name' => 'Basic',
+            'parent' => 'default'
+        ],
+
+        'advanced' => [
+            'views_path' => 'resources/themes/advanced/views',
+            'assets_path' => 'public/themes/advanced/assets',
+            'name' => 'Advanced',
+            'parent' => 'velocity'
+        ],
     ]
 ];
